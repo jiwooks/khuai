@@ -1,0 +1,7 @@
+# Render(https://render.com) 배포 설정: New → Blueprint → 이 저장소 선택
+services:
+  - type: web
+    name: gwailitda
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/health
