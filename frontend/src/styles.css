@@ -284,3 +284,9 @@ a.btn{text-decoration:none}
 .farmer-request .hd{display:flex;align-items:center;gap:6px;margin-bottom:8px}
 .farmer-request .hd .when{margin-left:auto;font-size:11px;color:var(--muted);font-weight:500}
 .farmer-request .btn{margin-top:12px}
+/* 설명 패널 없이 폰만 띄우는 무대 — 실제 앱처럼 보이게 */
+.stage.farmer-stage{grid-template-columns:minmax(0,400px);justify-content:center}
+
+/* 데모 설명 패널(.side)은 양쪽 앱 모두 숨긴다 — 폰 화면만 보여 실제 앱처럼 */
+.stage > .side{display:none}
+.stage{grid-template-columns:minmax(0,400px);justify-content:center}
