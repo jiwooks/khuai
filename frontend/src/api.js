@@ -28,3 +28,11 @@ export const api = {
   advanceOrder: (code) => request(`/orders/${code}/advance`, { method: 'POST' }),
   reviewOrder: (code, body) => request(`/orders/${code}/review`, { method: 'POST', body }),
 }
+
+export const farmerApi = {
+  farms: () => request('/farmer/farms'),
+  requests: (farmId) => request(`/farmer/farms/${farmId}/requests`),
+  updateRequest: (id, body) => request(`/farmer/requests/${id}`, { method: 'PATCH', body }),
+  updateSupply: (id, body) => request(`/farmer/supplies/${id}`, { method: 'PATCH', body }),
+  demand: () => request('/farmer/demand'),
+}

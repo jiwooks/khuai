@@ -260,3 +260,27 @@ a.btn{text-decoration:none}
 .nav-item[aria-current="page"]{color:var(--green);font-weight:700}
 .nav a.center{position:relative;flex-direction:column;align-items:center}
 .welcome{z-index:6}
+
+/* ───────── farmer ───────── */
+/* 리디자인 시 아래 farmer-* 셀렉터만 잡고 다시 칠한다 */
+.farmer-price{} .farmer-lot{} .farmer-request{} .farmer-demand{}
+.farmer-settle{} .farmer-step{} .farmer-pick{}
+
+.rolepick{padding:34px 4px 20px}
+.rolepick h2{font-size:29px;line-height:1.22;font-weight:800;letter-spacing:-.03em;color:var(--green-d);margin-bottom:8px}
+.rolepick>p{color:var(--muted);margin:0 0 22px;font-size:13.5px}
+.role-card{display:flex;align-items:center;gap:14px;padding:16px;border-radius:24px;text-decoration:none;color:inherit;margin-bottom:12px;
+  background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);box-shadow:var(--shadow)}
+.role-card .im{width:62px;height:62px;border-radius:20px;background:#fff;display:grid;place-items:center;padding:11px;flex:none}
+.role-card b{display:block;font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+.role-card small{display:block;font-size:11.5px;color:var(--muted);margin-top:3px;line-height:1.45}
+.role-card .go{width:30px;height:30px;border-radius:50%;background:var(--mint);color:var(--green-d);display:grid;place-items:center;flex:none;margin-left:auto}
+.roleswitch{position:fixed;top:14px;right:14px;z-index:30;display:flex;gap:3px;background:var(--glass-strong);
+  border:1px solid var(--glass-line);border-radius:999px;padding:4px;box-shadow:var(--shadow);backdrop-filter:blur(10px)}
+.roleswitch a{padding:7px 14px;border-radius:999px;font-size:12px;font-weight:700;color:var(--muted);text-decoration:none}
+.roleswitch a.on{background:var(--green);color:#fff}
+.nav.n4{grid-template-columns:repeat(4,1fr)}
+.farmer-pick .store-opt .im{width:44px;height:44px;border-radius:14px;background:var(--mint);display:grid;place-items:center;padding:8px;flex:none}
+.farmer-request .hd{display:flex;align-items:center;gap:6px;margin-bottom:8px}
+.farmer-request .hd .when{margin-left:auto;font-size:11px;color:var(--muted);font-weight:500}
+.farmer-request .btn{margin-top:12px}
