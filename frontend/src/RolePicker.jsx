@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import Icon from './shared/Icon.jsx'
 import { FruitIcon } from './shared/Fruit.jsx'
 import StatusBar from './store/components/StatusBar.jsx'
+import Character from './shared/Character.jsx'
 
 export default function RolePicker() {
   return (
@@ -16,7 +17,7 @@ export default function RolePicker() {
               <p>어느 쪽으로 시작할까요?</p>
 
               <Link to="/farmer" className="role-card">
-                <span className="im"><FruitIcon id="basket" /></span>
+                <span className="im"><Character type="farmer" /></span>
                 <span>
                   <b>생산자(농가)</b>
                   <small>출하 요청을 받고 수락해요. 경매 없이 제값에 팝니다.</small>
@@ -25,13 +26,15 @@ export default function RolePicker() {
               </Link>
 
               <Link to="/store" className="role-card">
-                <span className="im"><FruitIcon id="apple" /></span>
+                <span className="im"><Character type="merchant" /></span>
                 <span>
                   <b>자영업자</b>
                   <small>필요한 과일을 AI 추천으로 발주해요.</small>
                 </span>
                 <span className="go"><Icon name="arrow" size={16} /></span>
               </Link>
+              <div className="role-footer"><FruitIcon id="apple" /><FruitIcon id="tang" /></div>
+              <div className="role-tagline">산지의 정성이, 가게의 맛으로</div>
             </div>
           </div>
         </div>

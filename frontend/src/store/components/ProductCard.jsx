@@ -1,4 +1,5 @@
 import { FruitIcon } from '../../shared/Fruit.jsx'
+import Icon from '../../shared/Icon.jsx'
 import { won } from '../../shared/format.js'
 import { useStore } from '../StoreContext.jsx'
 
@@ -22,7 +23,7 @@ export default function ProductCard({ f }) {
           <small>kg · <s className="num">{won(f.market_price)}</s></small>
         </div>
         {q > 0 && <span className="qty-tag num">{q}박스</span>}
-        <button className="plus" aria-label={`${f.name} 담기`} onClick={() => { addToCart(f.id); toast(`${f.name} 1박스 담았어요`) }}>+</button>
+        <button className="plus" aria-label={`${f.name} 담기`} onClick={() => { addToCart(f.id); toast(`${f.name} 1박스 담았어요`) }}><Icon name="plus" /></button>
       </div>
     </div>
   )

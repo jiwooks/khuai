@@ -6,7 +6,7 @@ const Item = ({ to, icon, label, end }) => (
   <NavLink to={to} end={end} className={({ isActive }) => (isActive ? 'on' : '')}>
     {({ isActive }) => (
       <span className="nav-item" aria-current={isActive ? 'page' : undefined}>
-        <Icon name={icon} width={1.8} size={22} />{label}
+        <Icon name={icon} width={1.8} size={26} active={isActive} />{label}
       </span>
     )}
   </NavLink>
