@@ -1,4 +1,5 @@
 import { won } from '../../shared/format.js'
+import Character from '../../shared/Character.jsx'
 import { LEGACY_FARMER_SHARE, PAST_SETTLEMENTS, SETTLEMENT } from '../mock.js'
 
 export default function Settlement() {
@@ -12,6 +13,7 @@ export default function Settlement() {
       <div className="head-bar"><h2>정산</h2></div>
 
       <div className="farmer-price hero-green">
+        <Character type="farmer" className="settlement-art" />
         <small>{SETTLEMENT.month}월 정산 예정액</small>
         <b className="num">{won(SETTLEMENT.expected)}원</b>
         <div style={{ borderTop: '1px solid rgba(255,255,255,.28)', marginTop: 12, paddingTop: 10 }}>

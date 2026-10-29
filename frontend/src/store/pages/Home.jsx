@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { api } from '../../api.js'
 import { FruitIcon } from '../../shared/Fruit.jsx'
 import Icon from '../../shared/Icon.jsx'
+import Character from '../../shared/Character.jsx'
 import { won } from '../../shared/format.js'
 import { useLoad, useStore } from '../StoreContext.jsx'
 
@@ -29,21 +30,18 @@ export default function Home() {
     <>
       <div className="top">
         <div className="grow">
-          <h2>안녕하세요, {store.name} 사장님!</h2>
+          <h2>안녕하세요,<br />{store.name} 사장님!</h2>
           <div className="t2">{store.location} · <b>내일 오전 도착</b> 가능</div>
         </div>
-        <button className="avatar" onClick={() => setSheet({ type: 'store' })} aria-label="매장 바꾸기">{store.icon}</button>
+        <button className="avatar" onClick={() => setSheet({ type: 'store' })} aria-label="매장 바꾸기"><Character type="merchant" /></button>
       </div>
       <SearchBar />
       <div className="banner">
-        <h3>제철 과일, 산지에서 바로 최대 {data.max_discount_pct}% 저렴하게</h3>
-        <p>오후 2시 전 주문하면 내일 오전 10시 전 매장 도착</p>
+        <h3>제철 과일, 산지에서<br />바로 최대 {data.max_discount_pct}% 저렴하게</h3>
+        <p>오후 2시 전 주문하면<br />내일 오전 10시 전 매장 도착</p>
         <Link className="btn sm" to="/store/market">마켓 보기</Link>
         <div className="art">
-          <span className="f" style={{ width: 90, height: 70, left: 40, top: 58 }}><FruitIcon id="basket" /></span>
-          <span className="f" style={{ width: 56, height: 56, left: 44, top: 22 }}><FruitIcon id="apple" /></span>
-          <span className="f" style={{ width: 50, height: 50, left: 86, top: 20 }}><FruitIcon id="tang" /></span>
-          <span className="f" style={{ width: 46, height: 46, left: 72, top: 2 }}><FruitIcon id="shine" /></span>
+          <Character type="merchant" />
         </div>
       </div>
 
@@ -61,7 +59,7 @@ export default function Home() {
               </button>
               <div className="bx">
                 <b className="num">{r.boxes}박스</b>
-                <button className="plus" aria-label="담기" onClick={() => { addToCart(f.id, r.boxes); toast(`${f.name} ${r.boxes}박스 담았어요`) }}>+</button>
+                <button className="plus" aria-label={`${f.name} 추천 수량 담기`} onClick={() => { addToCart(f.id, r.boxes); toast(`${f.name} ${r.boxes}박스 담았어요`) }}><Icon name="plus" /></button>
               </div>
             </div>
           )

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { api } from '../../api.js'
@@ -8,11 +8,28 @@ import { won } from '../../shared/format.js'
 import { useStore } from '../StoreContext.jsx'
 import Stepper from './Stepper.jsx'
 
-function Sheet({ onClose, children }) {
+function Sheet({ onClose, children, label }) {
+  const dialog = useRef(null)
+  useEffect(() => {
+    const previous = document.activeElement
+    const panel = dialog.current
+    panel.querySelector('button')?.focus()
+    const onKey = (e) => {
+      if (e.key === 'Escape') { e.preventDefault(); onClose() }
+      if (e.key !== 'Tab') return
+      const controls = [...panel.querySelectorAll('button:not(:disabled), input, a[href], [tabindex="0"]')].filter((el) => el.getClientRects().length)
+      const first = controls[0], last = controls.at(-1)
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last?.focus() }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first?.focus() }
+    }
+    panel.addEventListener('keydown', onKey)
+    return () => { panel.removeEventListener('keydown', onKey); previous?.focus() }
+  }, [onClose])
   return (
     <div className="sheet-bg" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="sheet" role="dialog" aria-modal="true">
+      <div className="sheet" role="dialog" aria-modal="true" aria-label={label} ref={dialog}>
         <div className="grab" />
+        <button className="close-sheet" onClick={onClose} aria-label="상세 창 닫기">← 닫기</button>
         {children}
       </div>
     </div>
@@ -24,7 +41,7 @@ export default function Sheets() {
   if (!sheet) return null
   const close = () => setSheet(null)
   return (
-    <Sheet onClose={close}>
+    <Sheet onClose={close} label={{ product: '과일 상세', store: '매장 선택', review: '품질 평가' }[sheet.type]}>
       {sheet.type === 'product' && <ProductSheet id={sheet.id} close={close} />}
       {sheet.type === 'store' && <StoreSheet close={close} />}
       {sheet.type === 'review' && <ReviewSheet code={sheet.code} close={close} />}

@@ -6,7 +6,11 @@ export default function StatusBar() {
   return (
     <div className="status">
       <span className="num">{now.getHours()}:{String(now.getMinutes()).padStart(2, '0')}</span>
-      <span className="ic"><span style={{ width: 16, height: 9 }} /><span style={{ width: 4, height: 9, opacity: 0.5 }} /><span style={{ width: 22, height: 11, borderRadius: 3 }} /></span>
+      <span className="ic" aria-hidden="true">
+        <img src="/assets/figma/69b20.svg" alt="" />
+        <img src="/assets/figma/5ff5b.svg" alt="" />
+        <img src="/assets/figma/c69aa.svg" alt="" />
+      </span>
     </div>
   )
 }

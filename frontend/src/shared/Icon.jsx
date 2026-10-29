@@ -11,7 +11,18 @@ const PATHS = {
   calendar: 'M3.5 5.5h17v15h-17zM3.5 10h17M8.5 3.5v4M15.5 3.5v4',
 }
 
-export default function Icon({ name, width = 2, size = 20 }) {
+const FIGMA_ICONS = {
+  home: ['f3e50.svg', 'f7cb5.svg'],
+  market: ['f9afe.svg', '126e5.svg'],
+  cart: ['d5f8b.svg', '867c4.svg'],
+  orders: ['d3c16.svg', '8f40d.svg'],
+  ai: ['c2630.svg', '8ed07.svg'],
+  search: ['6abc6.svg'], heart: ['6364d.svg'], arrow: ['ecafa.svg'], plus: ['03602.svg'],
+}
+
+export default function Icon({ name, width = 2, size = 20, active = false }) {
+  const asset = FIGMA_ICONS[name]
+  if (asset) return <span className="design-icon" style={{ width: size, height: size }} aria-hidden="true"><img src={`/assets/figma/${asset[active ? 1 : 0] || asset[0]}`} alt="" /></span>
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={width} strokeLinecap="round" strokeLinejoin="round" width={size} height={size}>
       <path d={PATHS[name]} />

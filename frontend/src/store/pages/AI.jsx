@@ -2,12 +2,13 @@ import { useSearchParams } from 'react-router-dom'
 
 import { api } from '../../api.js'
 import { FruitIcon, FruitTile } from '../../shared/Fruit.jsx'
+import Character from '../../shared/Character.jsx'
 import { DAYS, short, won } from '../../shared/format.js'
 import ForecastBars from '../components/ForecastBars.jsx'
 import Stepper from '../components/Stepper.jsx'
 import { useLoad, useStore } from '../StoreContext.jsx'
 
-const TABS = [['rec', '발주 추천'], ['sub', '정기 발주'], ['menu', '메뉴 제안']]
+const TABS = [['rec', '상품 추천'], ['sub', '정기 발주'], ['menu', '메뉴 제안']]
 
 export default function AI() {
   const [params, setParams] = useSearchParams()
@@ -110,6 +111,7 @@ function Subscriptions() {
           </div>
         ))}
       </div>
+      <Character type="merchant" className="subscription-art" />
     </>
   )
 }

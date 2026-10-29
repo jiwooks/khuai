@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import Icon from '../../shared/Icon.jsx'
+import { FruitIcon } from '../../shared/Fruit.jsx'
 import { won } from '../../shared/format.js'
 import { SETTLEMENT } from '../mock.js'
 import { useFarmer } from '../FarmerContext.jsx'
@@ -28,7 +28,6 @@ export default function Home() {
   return (
     <>
       <div className="top">
-        <span className="avatar">{farm.name.slice(0, 1)}</span>
         <div className="grow">
           <h2>{farm.name}님</h2>
           <div className="t2">
@@ -43,12 +42,13 @@ export default function Home() {
           <div className="grow">
             <div className="t1">새 출하 요청이 왔어요</div>
           </div>
-          <Icon name="arrow" size={18} />
+          <span aria-hidden="true">→</span>
         </Link>
       )}
 
       {price && (
         <div className="farmer-price hero-green" style={{ marginTop: 14 }}>
+          <span className="price-fruit"><FruitIcon id={main.fruit_id} /></span>
           <small>오늘 {main.fruit} {price.grade} 기준</small>
           <b className="num">{won(price.platform)}원/kg</b>
           <div className="row" style={{ gap: 8, marginTop: 2 }}>

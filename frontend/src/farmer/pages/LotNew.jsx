@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import Icon from '../../shared/Icon.jsx'
 import { FruitIcon } from '../../shared/Fruit.jsx'
+import Character from '../../shared/Character.jsx'
 import { won } from '../../shared/format.js'
 import { GRADES, HARVEST_DATE, QTY_PRESETS, VARIETIES } from '../mock.js'
 import { useFarmer } from '../FarmerContext.jsx'
@@ -50,7 +51,7 @@ export default function LotNew() {
     <div className="farmer-step">
       <div className="head-bar">
         <button className="back" onClick={back} aria-label="뒤로">
-          <span style={{ transform: 'rotate(180deg)', display: 'grid' }}><Icon name="arrow" size={16} /></span>
+          <span aria-hidden="true">←</span>
         </button>
         <h2>출하 등록</h2>
         <button className="sub" onClick={() => navigate('/farmer')}>닫기</button>
@@ -74,6 +75,7 @@ export default function LotNew() {
           <div className="opt">
             {farm.supplies.map((s) => (
               <button key={s.id} aria-pressed={fruitId === s.fruit_id} onClick={() => { setFruitId(s.fruit_id); setVariety('') }}>
+                <span className="lot-fruit"><FruitIcon id={s.fruit_id} /></span>
                 <b>{s.fruit}</b>
                 주간 {s.weekly_capacity_kg}kg
               </button>
@@ -202,6 +204,7 @@ export default function LotNew() {
       <button className="btn block lg" style={{ marginTop: 22 }} disabled={!ready || saving} onClick={submit}>
         {step < 3 ? '다음' : saving ? '등록 중…' : '출하 등록하기'}
       </button>
+      {step === 1 && <Character type="farmer" className="lot-art" />}
     </div>
   )
 }
